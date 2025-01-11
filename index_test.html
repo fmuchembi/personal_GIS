@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportSpotter</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EYX0C183ND"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-EYX0C183ND');
+</script>
+
+<body>
+    <!--header-->
+    <header>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for Sports..."/>
+        </div>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <!--<a class="navbar-brand" id='hey' href="#">SportSpotter</a>-->
+                <button id="tog" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="testlandingpage.html">
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger active" href="index_test.html">Map</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+        </div>
+        <div class="weather-widget">
+            <img src="icons/weather-icon.png" alt="Weather Icon">
+            <span>10°C</span>
+        </div> 
+    </header>
+    <input id="zoom-lock" type="checkbox" />
+    <label class="btn-lock" for="zoom-lock">
+        <svg width="36" height="40" viewBox="0 0 36 40">
+            <path class="lockb"
+                d="M27 27C27 34.1797 21.1797 40 14 40C6.8203 40 1 34.1797 1 27C1 19.8203 6.8203 14 14 14C21.1797 14 27 19.8203 27 27ZM15.6298 26.5191C16.4544 25.9845 17 25.056 17 24C17 22.3431 15.6569 21 14 21C12.3431 21 11 22.3431 11 24C11 25.056 11.5456 25.9845 12.3702 26.5191L11 32H17L15.6298 26.5191Z">
+            </path>
+            <path class="lock" d="M6 21V10C6 5.58172 9.58172 2 14 2V2C18.4183 2 22 5.58172 22 10V21"></path>
+            <path class="bling" d="M29 20L31 22"></path>
+            <path class="bling" d="M31.5 15H34.5"></path>
+            <path class="bling" d="M29 10L31 8"></path>
+        </svg>
+    </label>
+    <div class="container-fluid">
+        <div class="left-section">
+                <div id="map"></div>
+                <button id="theme-toggle" class="theme-button default-image"></button>
+                    <!--sidebar icons-->
+                <div class="sidebar">
+                    <div class="sport-icons">
+                        <div class="sport-icon" data-sport="soccer">
+                            <img src="icons/football-icon.png" alt="Football Icon">
+                        </div>
+                        <div class="sport-icon" data-sport="tennis">
+                            <img src="icons/tennis-icon.png" alt="Tennis Icon">
+                        </div>
+                        <div class="sport-icon" data-sport="table_tennis">
+                            <img src="icons/table_tennis.png" alt="table_tennis Icon">
+                        </div>
+                        <div class="sport-icon" data-sport="boules">
+                            <img src="icons/boules.png" alt="boules Icon">
+                        </div>
+                        <div class="sport-icon" data-sport="speckbrett">
+                            <img src="icons/speckbrett.png" alt="speckbrett Icon">
+                        </div>
+                        <div class="sport-icon" data-sport="skateboard">
+                            <img src="icons/skateboard.png" alt="skateboard Icon">
+                        </div>
+                        <div class="sport-icon" data-sport="basketball">
+                            <img src="icons/basketball.png" alt="basketball Icon">
+                        </div>
+                        <div class="sport-icon" data-sport="beachvolleyball">
+                            <img src="icons/beachvolleyball.png" alt="beachvolleyball Icon">
+                        </div>
+                        <div class="sport-icon" data-sport="team_handball">
+                            <img src="icons/team_handball.png" alt="team_handball">
+                        </div>
+                        <div class="sport-icon" data-sport="equestrian">
+                            <img src="icons/equestrian.png" alt="equestrian">
+                        </div>
+                        <div class="sport-icon" data-sport="archery">
+                            <img src="icons/archery.png" alt="archery">
+                        </div>
+                        <div class="sport-icon" data-sport="paintball">
+                            <img src="icons/paintball.png" alt="paintball">
+                        </div>
+                    </div>    
+                </div>
+        </div>
+        <div class="right-section">
+            <div class="events">
+                <h5>
+                    UPCOMING EVENTS EVENTS
+                </h5>
+                <div class="card mb-2" style="max-width: 540px;">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <img src="images\upcoming-events\horse_riding.jpg" class="img-fluid rounded-start" alt="...">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h6 class="card-title">AGRAVIS-CUP 2025</h6>
+                          <p class="card-text">Location: Halle Münsterland, Münster</p>
+                          <p class="card-text"><small class="text-body-secondary">Sonntag 12.01.2025  08:00</small></p>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+
+  
+
+    <!---------------------------------------------------------->
+    <!-- + Sign Button -->
+    <div class="popup-trigger" onclick="openPopup()">+</div>
+    <!-- Popup Content -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <h2>Sign Up / Login</h2>
+
+            <!-- Toggle between Sign Up and Login forms -->
+            <div class="tabs">
+                <button class="tab-button" onclick="showForm('login')">Login</button>
+                <button class="tab-button" onclick="showForm('signup')">Sign Up</button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="login-form" class="form" style="display: none;">
+                <h3>Login</h3>
+                <input type="text" id="login-username" placeholder="Username" required><br>
+                <input type="password" id="login-password" placeholder="Password" required><br>
+                <button onclick="login()">Login</button>
+            </div>
+
+            <!-- Sign Up Form -->
+            <div id="signup-form" class="form" style="display: none;">
+                <h3>Sign Up</h3>
+                <input type="text" id="signup-username" placeholder="Username" required><br>
+                <input type="email" id="signup-email" placeholder="Email" required><br>
+                <input type="password" id="signup-password" placeholder="Password" required><br>
+                <button onclick="signup()">Sign Up</button>
+            </div>
+        </div>
+    </div>
+    <!---------------------------------------------------------->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+
+     
+<!--------------------------nearest sports panel-->
+<!--<div id="sportsPanel" class="sports-panel">
+    <h3>Top 5 Nearest Sports</h3>
+    <ul id="sportsList"></ul>
+</div> -->
+
+
+
+
+
+
+
+
+
+

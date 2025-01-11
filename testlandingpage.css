@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #161515;
+  }
+
+  .navbar {
+    background-color: #eee6e6;
+    height: 80px;
+  }
+
+  .navbar-brand {
+    font-weight: bold;
+    color: #282727 !important;
+  }
+
+  .navbar-nav .nav-link {
+    color: black !important; /* Ensures the text color is black */
+}
+  .btn-primary {
+    background-color: #dc3545;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background-color: #bb2d3b;
+  }
+  .hero {
+    color: #fff;
+    padding: 100px 20px;
+    text-align: center;
+    background-image: url("https://cdn.pixabay.com/photo/2018/12/09/17/57/munster-3865366_1280.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 90vh; /* Full height of the viewport */
+    width: 100%;   /* Full width of the viewport */
+    display: flex; /* Centers content */
+    flex-direction: column; /* Stacks items vertically */
+    justify-content: center; /* Centers items vertically */
+    align-items: center; /* Centers items horizontally */
+    margin: 0; /* Removes default margin */
+    box-sizing: border-box; /* Ensures padding is included in the height and width */
+}
+
+
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .games-card {
+    transition: transform 0.3s;
+  }
+
+  .games-card:hover {
+    transform: scale(1.05);
+  }
+
+  footer {
+    background-color: #dc3545;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+  }
