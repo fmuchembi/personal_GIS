@@ -237,23 +237,6 @@ document.addEventListener('DOMContentLoaded', function () {
             <button class="navigate-btn" data-lat="${coords[0]}" data-lon="${coords[1]}">Navigate ➤</button>
         `;
     }
-
-
-    //test
-    /*function getPopupContent(feature, distance) {
-        const properties = feature.properties;
-        const coords = getMarkerCoordinates(feature);
-    
-        return `
-            <h3>${properties.sport}</h3>
-            <p>Surface: ${properties.surface || 'N/A'}</p>
-            ${properties.lit ? `<p>Lit: Yes</p>` : ''}
-            ${properties.ref ? `<p>Ref: ${properties.ref}</p>` : ''}
-            ${properties['addr:street'] ? `<p>Address: ${properties['addr:street']}, ${properties['addr:housenumber']}, ${properties['addr:postcode']} ${properties['addr:city']}</p>` : ''}
-            ${distance !== null ? `<p>Distance: ${(distance / 1000).toFixed(2)}m</p>` : ''}
-            <button class="navigate-btn" data-lat="${coords[0]}" data-lon="${coords[1]}">Navigate ➤</button>
-        `;
-    }*/
     
 
     const markers = {}; // Object to hold markers for each sport
@@ -291,76 +274,6 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Detailed error:', error.message);
         });
 
-
-
-
-
-
- //test
-    /*function getPopupContent(feature, distance) {
-        const properties = feature.properties;
-        const coords = getMarkerCoordinates(feature);
-    
-        return `
-            <h3>${properties.sport}</h3>
-            <p>Surface: ${properties.surface || 'N/A'}</p>
-            ${properties.lit ? `<p>Lit: Yes</p>` : ''}
-            ${properties.ref ? `<p>Ref: ${properties.ref}</p>` : ''}
-            ${properties['addr:street'] ? `<p>Address: ${properties['addr:street']}, ${properties['addr:housenumber']}, ${properties['addr:postcode']} ${properties['addr:city']}</p>` : ''}
-            ${distance !== null ? `<p>Distance: ${(distance / 1000).toFixed(2)}m</p>` : ''}
-            <button class="navigate-btn" data-lat="${coords[0]}" data-lon="${coords[1]}">Navigate ➤</button>
-        `;
-    }*/
-
-
-
-/// incooporated distance
-    /*    fetch('data.geojson')
-    .then(response => response.json())
-    .then(data => {
-        const userLocation = userLocationMarker ? userLocationMarker.getLatLng() : null;
-
-        data.features.forEach(feature => {
-            const sport = feature.properties.sport;
-            if (!markers[sport]) markers[sport] = [];
-
-            if (feature.geometry.type === 'Point') {
-                const coords = getMarkerCoordinates(feature);  // Ensure this returns [lat, lon] in correct order
-                const icon = createIcon(sport);
-                const marker = L.marker(coords, { icon: icon, sport: sport });
-
-                let distance = null;
-                if (userLocation) {
-                    // Ensure that both user and marker locations are in [lat, lon] order
-                    const markerLocation = L.latLng(coords[0], coords[1]);  // lat, lon
-                    distance = userLocation.distanceTo(markerLocation);  // Distance is in meters
-                }
-
-                const popupContent = getPopupContent(feature, distance);
-                marker.bindPopup(popupContent, { className: 'custom-popup' });
-                markers[sport].push(marker);
-            } else if (feature.geometry.type === 'Polygon' || feature.geometry.type === 'MultiPolygon') {
-                const centroid = getCentroid(feature.geometry.coordinates[0]);
-                const icon = createIcon(sport);
-                const marker = L.marker(centroid, { icon: icon, sport: sport });
-
-                let distance = null;
-                if (userLocation) {
-                    const markerLocation = L.latLng(centroid[1], centroid[0]);  // lat, lon
-                    distance = userLocation.distanceTo(markerLocation);  // Distance is in meters
-                }
-
-                const popupContent = getPopupContent(feature, distance);
-                marker.bindPopup(popupContent, { className: 'custom-popup' });
-                markers[sport].push(marker);
-            }
-        });
-    })
-    .catch(error => {
-        console.error('Error loading GeoJSON:', error);
-    });*/
-
-    
 
 
 /////////////////////sliced to 5 nearest from user location//////////////// 
@@ -435,11 +348,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 } else {
                     alert("User location is not available. Please enable location tracking.");
-                    map.setView([51.960665, 7.626135], 13); // Center on Münster, Germany
+                    map.setView([51.960665, 7.626135], 13); 
                 }
             } else {
                 console.log(`No locations found for sport: ${sport}`);
-                map.setView([51.960665, 7.626135], 13); // Center on Münster, Germany
+                map.setView([51.960665, 7.626135], 13);
             }
         });
     });

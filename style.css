@@ -84,16 +84,16 @@ header{
   /* Left section flex container */
   .left-section {
     display: flex;
-    width: 60%; /* Takes 80% of the width */
-    height: 100%; /* Full height */
-    position: relative; /* To position sidebar */
+    width: 60%; 
+    height: 100%; 
+    position: relative; 
   }
   
   /* Map section */
   #map {
-    flex: 1; /* Allow the map to take up remaining space */
-    background-color: lightblue; /* Just a background color for the map */
-    height: 100%; /* Leave space for sidebar */
+    flex: 1; 
+    background-color: lightblue; 
+    height: 100%; 
     width: 50%;
   }
   
